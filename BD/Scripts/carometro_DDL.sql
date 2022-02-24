@@ -1,5 +1,3 @@
-drop database carometro
-
 CREATE DATABASE carometro
 GO 
 
@@ -23,7 +21,7 @@ GO
 
 CREATE TABLE TURMA (
   idTurma TINYINT PRIMARY KEY IDENTITY,
-  descricaTurma VARCHAR(30) NOT NULL
+  descricaoTurma VARCHAR(30) NOT NULL
 );
 GO
 
@@ -33,7 +31,7 @@ CREATE TABLE ALUNO (
   nomeAluno VARCHAR(90) NOT NULL,
   RM VARCHAR(10) NOT NULL,
   dataNascimento DATE NOT NULL,
-  CPF VARCHAR(14) NOT NULL,
+  CPF CHAR(14) NOT NULL,
   telefoneCel VARCHAR(11) NOT NULL,
   telefoneFixo VARCHAR(10) NOT NULL,
   emailAluno VARCHAR(256) NOT NULL,

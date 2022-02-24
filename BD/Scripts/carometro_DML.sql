@@ -15,7 +15,7 @@ VALUES
 (1,'Administrador','adm@gmail.com','adm12345');
 GO
 
-INSERT INTO TURMA (descricaTurma)
+INSERT INTO TURMA (descricaoTurma)
 VALUES 
 ('1RM'),
 ('2RM'),
