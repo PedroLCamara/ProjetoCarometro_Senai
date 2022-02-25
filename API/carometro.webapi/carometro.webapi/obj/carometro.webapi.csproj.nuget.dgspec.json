@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\43392993832\\Desktop\\Carometro\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {}
+    "C:\\Users\\44032009821.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\43392993832\\Desktop\\Carometro\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {
+    "C:\\Users\\44032009821.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\43392993832\\Desktop\\Carometro\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
+        "projectUniqueName": "C:\\Users\\44032009821.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
         "projectName": "carometro.webapi",
-        "projectPath": "C:\\Users\\43392993832\\Desktop\\Carometro\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
-        "packagesPath": "C:\\Users\\43392993832\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\43392993832\\Desktop\\Carometro\\API\\carometro.webapi\\carometro.webapi\\obj\\",
+        "projectPath": "C:\\Users\\44032009821.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
+        "packagesPath": "C:\\Users\\44032009821.INFOSCS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\44032009821.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\43392993832\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\44032009821.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,18 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.14, )"
@@ -53,6 +65,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.14, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.16.0, )"
             }
           },
           "imports": [
@@ -73,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
