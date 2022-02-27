@@ -1,9 +1,11 @@
 ﻿using carometro.webapi.Domains;
 using carometro.webapi.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +13,7 @@ namespace carometro.webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class ComentarioController : ControllerBase
     {
         private readonly IComentarioRepository _comentarioRepository;
@@ -20,13 +23,38 @@ namespace carometro.webapi.Controllers
             _comentarioRepository = repo;
         }
 
-        [HttpPost]
-        public ActionResult<Comentario> PostComentario(Comentario novoComentario, int idAluno)
+        [HttpPost("{idAluno}")]
+        [Authorize(Roles = "1,2")]
+        public IActionResult PostComentario(Comentario novoComentario, int idAluno)
         {
-            _comentarioRepository.Cadastrar(novoComentario, idAluno);
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.FirstOrDefault(C => C.Type == JwtRegisteredClaimNames.Jti).Value);
+                _comentarioRepository.Cadastrar(novoComentario, idAluno, idUsuario);
 
-            return Created("Comentario", novoComentario);
+                return Created("Comentario", novoComentario);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
 
+        }
+
+        [HttpGet("{idAluno}")]
+        [Authorize(Roles ="1,2")]
+        public IActionResult GetByAluno(int idAluno)
+        {
+            try
+            {
+                return Ok(_comentarioRepository.BuscarPorIdAluno(idAluno));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
         }
     }
 }

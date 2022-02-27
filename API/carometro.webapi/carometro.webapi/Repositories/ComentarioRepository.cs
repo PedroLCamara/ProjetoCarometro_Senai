@@ -11,9 +11,16 @@ namespace carometro.webapi.Repositories
     public class ComentarioRepository : IComentarioRepository
     {
         carometroContext ctx = new carometroContext();
-        public void Cadastrar(Comentario novoComentario, int idAluno)
+
+        public List<Comentario> BuscarPorIdAluno(int idAluno)
+        {
+            return ctx.Comentarios.ToList().FindAll(c => c.IdAluno == idAluno);
+        }
+
+        public void Cadastrar(Comentario novoComentario, int idAluno, int IdUsuario)
         {
             novoComentario.IdAluno = idAluno;
+            novoComentario.IdUsuario = IdUsuario;
             ctx.Comentarios.Add(novoComentario);
             ctx.SaveChanges();
         }

@@ -4,6 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+
+	<ItemGroup>
+		<Compile Remove="Context\**" />
+		<Content Remove="Context\**" />
+		<EmbeddedResource Remove="Context\**" />
+		<None Remove="Context\**" />
+	</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />

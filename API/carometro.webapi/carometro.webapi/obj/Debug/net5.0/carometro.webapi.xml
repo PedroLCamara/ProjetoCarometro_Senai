@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>carometro.webapi</name>
+    </assembly>
+    <members>
+        <member name="M:carometro.webapi.Controllers.LoginController.Login(carometro.webapi.ViewModels.LoginViewModel)">
+            <summary>
+            Valida o usuário
+            </summary>
+            <param name="login">Objeto login que contém o e-mail e a senha do usuário</param>
+            <returns>Retorna um token com as informações do usuário</returns>
+            dominio/api/Login
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.Cadastrar(carometro.webapi.Domains.Aluno)">
+            <summary>
+            Cadastra um novo aluno
+            </summary>
+            <param name="novoAluno">Novo aluno a ser cadastrado</param>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.ListarTodos">
+            <summary>
+            Lista todos os alunos
+            </summary>
+            <returns>Uma lista de alunos</returns>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.Deletar(System.Byte)">
+            <summary>
+            Deleta um usuário
+            </summary>
+            <param name="id">Id do usuario a ser deletado</param>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.Atualizar(System.Byte,carometro.webapi.Domains.Aluno)">
+            <summary>
+            Atualiza as informacoes de um aluno existente
+            </summary>
+            <param name="id">Id do aluno a ser atualizado</param>
+            <param name="alunoAtualizado">Aluno com as informações atualizadas</param>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.ListarTodosTurma(System.Int32)">
+            <summary>
+            Lista todos os alunos de uma turma
+            </summary>
+            <param name="idTurma">Id da turma a ser listada</param>
+            <returns>Uma lista de alunos</returns>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.BuscarPorNome(System.String)">
+            <summary>
+            Busca um ou mais alunos pela proximidade da busca com seu nome
+            </summary>
+            <param name="queryNome">Nome buscado</param>
+            <returns>Lista de alunos com nomes próximos ou iguais</returns>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.BuscarPorImagem(System.String)">
+            <summary>
+            Busca um aluno pela foto dele
+            </summary>
+            <param name="foto">Foto do aluno</param>
+            <returns>Um aluno</returns>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IAlunoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um aluno pelo seu id
+            </summary>
+            <param name="id">Id do aluno</param>
+            <returns>Um aluno</returns>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IComentarioRepository.Cadastrar(carometro.webapi.Domains.Comentario,System.Int32,System.Int32)">
+            <summary>
+            Cadastra um novo comentário
+            </summary>
+            <param name="novoComentario">Comentario a ser cadastrado</param>
+            <param name="idAluno">Id do aluno ao qual o comentario pertence</param>
+            /// <param name="IdUsuario">Id do usuário que comentou</param>
+        </member>
+        <member name="M:carometro.webapi.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Valida o usuario
+            </summary>
+            <param name="email">email do usuario</param>
+            <param name="senha">senha do usuario</param>
+            <returns>um usuario validado</returns>
+        </member>
+        <member name="T:carometro.webapi.ViewModels.LoginViewModel">
+            <summary>
+            Classe responsável pelo modelo de Login
+            </summary>
+        </member>
+    </members>
+</doc>

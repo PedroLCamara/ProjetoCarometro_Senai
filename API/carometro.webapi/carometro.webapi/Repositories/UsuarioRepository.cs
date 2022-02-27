@@ -24,7 +24,7 @@ namespace carometro.webapi.Repositories
 
             if (usuario != null)
             {
-                if (usuario.Senha.StartsWith("$") && usuario.Senha.Length == 60)
+                if (usuario.Senha.StartsWith("$") && usuario.Senha.Length >= 32)
                 {
                     bool confere = Criptografia.Comparar(senha, usuario.Senha);
 

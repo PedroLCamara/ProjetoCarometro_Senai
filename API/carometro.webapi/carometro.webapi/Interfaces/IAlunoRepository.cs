@@ -41,11 +41,11 @@ namespace carometro.webapi.Interfaces
         List<Aluno> ListarTodosTurma(int idTurma);
 
         /// <summary>
-        /// Busca um aluno pelo nome dele
+        /// Busca um ou mais alunos pela proximidade da busca com seu nome
         /// </summary>
-        /// <param name="nome">nome do aluno a ser buscado</param>
-        /// <returns>Um aluno</returns>
-        Aluno BuscarPorNome(string nome);
+        /// <param name="queryNome">Nome buscado</param>
+        /// <returns>Lista de alunos com nomes próximos ou iguais</returns>
+        List<Aluno> BuscarPorNome(string queryNome);
 
         /// <summary>
         /// Busca um aluno pela foto dele
@@ -54,7 +54,11 @@ namespace carometro.webapi.Interfaces
         /// <returns>Um aluno</returns>
         Aluno BuscarPorImagem(string foto);
 
-
-
+        /// <summary>
+        /// Busca um aluno pelo seu id
+        /// </summary>
+        /// <param name="id">Id do aluno</param>
+        /// <returns>Um aluno</returns>
+        Aluno BuscarPorId(int id);
     }
 }

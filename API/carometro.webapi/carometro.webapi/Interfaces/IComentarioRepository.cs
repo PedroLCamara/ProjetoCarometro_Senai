@@ -13,6 +13,9 @@ namespace carometro.webapi.Interfaces
         /// </summary>
         /// <param name="novoComentario">Comentario a ser cadastrado</param>
         /// <param name="idAluno">Id do aluno ao qual o comentario pertence</param>
-        void Cadastrar(Comentario novoComentario, int idAluno);
+        /// /// <param name="IdUsuario">Id do usuário que comentou</param>
+        void Cadastrar(Comentario novoComentario, int idAluno, int IdUsuario);
+
+        List<Comentario> BuscarPorIdAluno(int idAluno);
     }
 }

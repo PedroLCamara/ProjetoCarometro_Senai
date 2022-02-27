@@ -1,20 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
-import telaLogin from './pages/telaLogin';
-import perfilAluno from './pages/perfilAluno';
-import telaADM from './pages/telaADM';
+import Login from './pages/telaLogin/telaLogin';
+import perfilAluno from './pages/perfilAluno/perfilAluno';
+import telaADM from './pages/telaADM/telaADM';
+import TesteCadastro from './pages/testeCadastro/testeCadastro';
 
-import {Route, Routes, BrowserRouter as Router} from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  BrowserRouter as Router,
+  Redirect,
+} from 'react-router-dom';
 
 const Routing = (
   <Router>
     <div>
       <Routes>
-        <Route exact path="/" component={telaLogin}/>
-        <Route path="/PerfilAluno" component={perfilAluno} />
-        <Route path="/TelaADM" component={telaADM} />
+        <Route exact path="/" element={<Login/>}/>
+        {/* <Route path="/PerfilAluno" element={<perfilAluno/>} />
+        <Route path="/TelaADM" element={<telaADM/>} /> */}
+        <Route path="/TesteCadastro" element={<TesteCadastro/>} />
       </Routes>
     </div>
   </Router>

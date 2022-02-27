@@ -1,6 +1,7 @@
 ﻿using carometro.webapi.Contexts;
 using carometro.webapi.Domains;
 using carometro.webapi.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,23 +20,23 @@ namespace carometro.webapi.Repositories
 
         public void Atualizar(byte id, Aluno alunoAtualizado)
         {
-            Aluno aluno = ctx.Alunos.FirstOrDefault(a => a.IdAluno == id);
+            Aluno aluno = ctx.Alunos.AsNoTracking().FirstOrDefault(a => a.IdAluno == id);
             aluno = alunoAtualizado;
+            aluno.IdAluno = id;
             ctx.Alunos.Update(aluno);
             ctx.SaveChanges();
-
         }
 
-        public Aluno BuscarPorNome(string nome)
+        public List<Aluno> BuscarPorNome(string nome)
         {
-            Aluno aluno = ctx.Alunos.FirstOrDefault(a => a.NomeAluno == nome);
-            return aluno;
+            List<Aluno> retorno = ctx.Alunos.ToList().FindAll(a => a.NomeAluno.Contains(nome));
+            return retorno;
         }
 
         public void Cadastrar(Aluno novoAluno)
         {
             ctx.Alunos.Add(novoAluno);
-            ctx.SaveChangesAsync();
+            ctx.SaveChanges();
         }
 
         public void Deletar(byte id)
@@ -43,7 +44,6 @@ namespace carometro.webapi.Repositories
             Aluno aluno = ctx.Alunos.FirstOrDefault(a => a.IdAluno == id);
             ctx.Alunos.Remove(aluno);
             ctx.SaveChanges();
-            
         }
 
         public List<Aluno> ListarTodos()
@@ -53,12 +53,21 @@ namespace carometro.webapi.Repositories
 
         public List<Aluno> ListarTodosTurma(int idTurma)
         {
-            return ctx.Alunos.Where(a => a.IdTurma == idTurma).ToList();
+            if (ctx.Turmas.ToList().Find(t => Convert.ToInt32(t.IdTurma) == idTurma) != null)
+            {
+                return ctx.Alunos.Where(a => a.IdTurma == idTurma).ToList();
+            }
+            else return null;
         }
 
-        public Aluno BuscarPorImagem(string foto)
+        public Aluno BuscarPorImagem(string urlImg)
         {
             throw new NotImplementedException();
+        }
+
+        public Aluno BuscarPorId(int id)
+        {
+            return ctx.Alunos.AsNoTracking().FirstOrDefault(a => a.IdAluno == id);
         }
     }
 }

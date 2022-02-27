@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "430689f9-95b8-4a10-8fb2-3093c065789b": {
+      "ProjectGuid": "430689f9-95b8-4a10-8fb2-3093c065789b",
+      "DisplayName": "carometro.webapi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
