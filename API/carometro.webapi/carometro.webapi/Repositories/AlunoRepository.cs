@@ -62,7 +62,7 @@ namespace carometro.webapi.Repositories
 
         public Aluno BuscarPorImagem(string urlImg)
         {
-            throw new NotImplementedException();
+            return ctx.Alunos.FirstOrDefault(a => a.Urlimg == urlImg);
         }
 
         public Aluno BuscarPorId(int id)

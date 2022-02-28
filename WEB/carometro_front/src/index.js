@@ -5,6 +5,7 @@ import Login from './pages/telaLogin/telaLogin';
 import perfilAluno from './pages/perfilAluno/perfilAluno';
 import telaADM from './pages/telaADM/telaADM';
 import TesteCadastro from './pages/testeCadastro/testeCadastro';
+import TesteBuscarPorFoto from './pages/testeBuscarPorFoto/testeBuscarPorFoto';
 
 import {
   Routes,
@@ -21,6 +22,7 @@ const Routing = (
         {/* <Route path="/PerfilAluno" element={<perfilAluno/>} />
         <Route path="/TelaADM" element={<telaADM/>} /> */}
         <Route path="/TesteCadastro" element={<TesteCadastro/>} />
+        <Route path="/TesteBuscarPorFoto" element={<TesteBuscarPorFoto/>} />
       </Routes>
     </div>
   </Router>

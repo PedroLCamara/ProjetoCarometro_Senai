@@ -2,7 +2,6 @@
 //Não representa uma tela no escopo definitivo :)
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
 export const TesteCadastro = () => {
     const [ListaTurma, setListaTurma] = useState([]);

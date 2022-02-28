@@ -37,7 +37,27 @@ namespace carometro.webapi.Controllers
             }
         }
 
-        [HttpGet("porturma/{idTurma}")]
+        [HttpGet("porimagem/{idImg}")]
+        [Authorize]
+        public IActionResult BuscarPorFoto(string idImg)
+        {
+            try
+            {
+                Aluno alunoConsulta = _alunoRepository.BuscarPorImagem(idImg);
+                if (alunoConsulta != null)
+                {
+                    return Ok(alunoConsulta);
+                }
+                else return NotFound("Imagem existente na lista de imagens, mas não no Banco de Dados");
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpGet("por-turma/{idTurma}")]
         [Authorize]
         public IActionResult ListarPorTurma(int idTurma)
         {

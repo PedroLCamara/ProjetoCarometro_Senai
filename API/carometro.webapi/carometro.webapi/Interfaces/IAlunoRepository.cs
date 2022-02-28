@@ -50,7 +50,7 @@ namespace carometro.webapi.Interfaces
         /// <summary>
         /// Busca um aluno pela foto dele
         /// </summary>
-        /// <param name="foto">Foto do aluno</param>
+        /// <param name="foto">Id da foto do aluno na API de reconhecimento facial do Azure. Para mais informações, acesse: https://brazilsouth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236 </param>
         /// <returns>Um aluno</returns>
         Aluno BuscarPorImagem(string foto);
 
