@@ -1,0 +1,68 @@
+* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+header{
+    background-color: #B3DCF2;;
+    height: 75px;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    top: 0;
+}
+
+.container{
+    width: 1200px;
+    /*background-color: aquamarine;*/
+    margin: 5px auto;
+}
+
+.logo_menor {
+    height: 60px;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*background-color: blanchedalmond;*/
+    width: 95px;
+  
+}
+.container_header{
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 465px;
+    justify-content: space-between;
+}
+
+
+.containerHeader{
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_menor {
+    height: 60px;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*background-color: blanchedalmond;*/
+    width: 95px;
+  
+}
+
+.logo_meninas {
+    height: 168px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: blanchedalmond; */
+    width: 176px;
+    margin-top: 126px;
+    margin-left: 146px;
+}
+
+
