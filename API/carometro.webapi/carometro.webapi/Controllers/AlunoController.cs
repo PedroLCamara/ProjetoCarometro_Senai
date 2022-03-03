@@ -1,5 +1,6 @@
 ﻿using carometro.webapi.Domains;
 using carometro.webapi.Interfaces;
+using carometro.webapi.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ namespace carometro.webapi.Controllers
         {
             try
             {
-                Aluno alunoConsulta = _alunoRepository.BuscarPorImagem(idImg);
+                Aluno alunoConsulta = _alunoRepository.BuscarPorImagem(idImg.Split(".")[0]);
                 if (alunoConsulta != null)
                 {
                     return Ok(alunoConsulta);
@@ -89,10 +90,23 @@ namespace carometro.webapi.Controllers
 
         [HttpPost]
         [Authorize(Roles = "1")]
-        public IActionResult Cadastrar(Aluno AlunoCadastro)
+        public IActionResult Cadastrar([FromForm] Aluno AlunoCadastro, IFormFile arquivo)
         {
             try
             {
+                string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
+                string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas, AlunoCadastro.Urlimg);
+
+                if (uploadResultado == "")
+                {
+                    return BadRequest("Arquivo não encontrado");
+                }
+
+                if (uploadResultado == "Extensão não permitida")
+                {
+                    return BadRequest("Extensão de arquivo não permitida");
+                }
+                AlunoCadastro.Urlimg = uploadResultado;
                 _alunoRepository.Cadastrar(AlunoCadastro);
                 return Created("Aluno", AlunoCadastro);
             }
@@ -105,7 +119,7 @@ namespace carometro.webapi.Controllers
         
         [HttpPut("{idAluno}")]
         [Authorize(Roles = "1")]
-        public IActionResult Atualizar(Aluno AlunoAtualizado, int idAluno)
+        public IActionResult Atualizar([FromForm] Aluno AlunoAtualizado, IFormFile arquivo, int idAluno)
         {
             try
             {
@@ -114,6 +128,20 @@ namespace carometro.webapi.Controllers
                 {
                     return NotFound("Aluno não encontrado");
                 }
+                string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
+                string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas, AlunoAtualizado.Urlimg);
+
+                if (uploadResultado == "")
+                {
+                    return BadRequest("Arquivo não encontrado");
+                }
+
+                if (uploadResultado == "Extensão não permitida")
+                {
+                    return BadRequest("Extensão de arquivo não permitida");
+                }
+                Upload.RemoverArquivo(AlunoRetorno.Urlimg);
+                AlunoAtualizado.Urlimg = uploadResultado;
                 _alunoRepository.Atualizar(Convert.ToByte(idAluno), AlunoAtualizado);
                 return StatusCode(204, new { Aluno = AlunoAtualizado });
             }
@@ -135,6 +163,7 @@ namespace carometro.webapi.Controllers
                 {
                     return NotFound("Aluno não encontrado");
                 }
+                Upload.RemoverArquivo(AlunoRetorno.Urlimg);
                 _alunoRepository.Deletar(Convert.ToByte(idAlunoDeletado));
                 return NoContent();
             }

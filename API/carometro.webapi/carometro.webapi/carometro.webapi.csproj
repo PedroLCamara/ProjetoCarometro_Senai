@@ -12,6 +12,12 @@
 		<None Remove="Context\**" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <None Remove="StaticFiles\Images\TESTE.jpg" />
+	  <None Remove="StaticFiles\Images\TESTE1.jpg" />
+	</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
@@ -24,6 +30,10 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="StaticFiles\Images\" />
   </ItemGroup>
 
 	<PropertyGroup>
