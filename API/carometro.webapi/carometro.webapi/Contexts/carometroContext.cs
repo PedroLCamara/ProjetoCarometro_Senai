@@ -28,8 +28,8 @@ namespace carometro.webapi.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=NOTE011EI1\\SQLEXPRESS; initial catalog=carometro; user Id=sa; pwd=Senai@132;");
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-HKQ4RR5\\SQLEXPRESS; initial catalog=carometro; user Id=sa; pwd=senai@132;");
             }
         }
 
@@ -40,7 +40,7 @@ namespace carometro.webapi.Contexts
             modelBuilder.Entity<Aluno>(entity =>
             {
                 entity.HasKey(e => e.IdAluno)
-                    .HasName("PK__ALUNO__0C5BC8491555BBB1");
+                    .HasName("PK__ALUNO__0C5BC8492B2F398C");
 
                 entity.ToTable("ALUNO");
 
@@ -110,12 +110,9 @@ namespace carometro.webapi.Contexts
             modelBuilder.Entity<Comentario>(entity =>
             {
                 entity.HasKey(e => e.IdComentario)
-                    .HasName("PK__COMENTAR__C74515DA09874149");
+                    .HasName("PK__COMENTAR__C74515DAB853B078");
 
                 entity.ToTable("COMENTARIO");
-
-                entity.HasIndex(e => e.Descricao, "UQ__COMENTAR__91D38C289D379E3B")
-                    .IsUnique();
 
                 entity.Property(e => e.IdComentario).HasColumnName("idComentario");
 
@@ -127,16 +124,23 @@ namespace carometro.webapi.Contexts
 
                 entity.Property(e => e.IdAluno).HasColumnName("idAluno");
 
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
                 entity.HasOne(d => d.IdAlunoNavigation)
                     .WithMany(p => p.Comentarios)
                     .HasForeignKey(d => d.IdAluno)
-                    .HasConstraintName("FK__COMENTARI__idAlu__30F848ED");
+                    .HasConstraintName("FK__COMENTARI__idAlu__300424B4");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Comentarios)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("FK__COMENTARI__idUsu__30F848ED");
             });
 
             modelBuilder.Entity<Tipousuario>(entity =>
             {
                 entity.HasKey(e => e.IdTipoUsuario)
-                    .HasName("PK__TIPOUSUA__03006BFF47E4C6B1");
+                    .HasName("PK__TIPOUSUA__03006BFF61F33744");
 
                 entity.ToTable("TIPOUSUARIO");
 
@@ -154,7 +158,7 @@ namespace carometro.webapi.Contexts
             modelBuilder.Entity<Turma>(entity =>
             {
                 entity.HasKey(e => e.IdTurma)
-                    .HasName("PK__TURMA__AA068310948621FE");
+                    .HasName("PK__TURMA__AA06831090D36484");
 
                 entity.ToTable("TURMA");
 
@@ -172,14 +176,14 @@ namespace carometro.webapi.Contexts
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__USUARIO__645723A660D280A3");
+                    .HasName("PK__USUARIO__645723A61DBCE755");
 
                 entity.ToTable("USUARIO");
 
-                entity.HasIndex(e => e.NomeUsuario, "UQ__USUARIO__8C9D1DE5C197256B")
+                entity.HasIndex(e => e.NomeUsuario, "UQ__USUARIO__8C9D1DE594391F47")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Email, "UQ__USUARIO__AB6E6164A2D9D2A8")
+                entity.HasIndex(e => e.Email, "UQ__USUARIO__AB6E6164DDEB9E7D")
                     .IsUnique();
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
@@ -200,7 +204,7 @@ namespace carometro.webapi.Contexts
 
                 entity.Property(e => e.Senha)
                     .IsRequired()
-                    .HasMaxLength(10)
+                    .HasMaxLength(72)
                     .IsUnicode(false)
                     .HasColumnName("senha");
 
