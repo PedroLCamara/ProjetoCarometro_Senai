@@ -7586,19 +7586,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pichau\\.nuget\\packages\\": {}
+    "C:\\Users\\54667532890.INFOSCS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
+      "projectUniqueName": "C:\\Users\\54667532890.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
       "projectName": "carometro.webapi",
-      "projectPath": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
-      "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\",
+      "projectPath": "C:\\Users\\54667532890.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
+      "packagesPath": "C:\\Users\\54667532890.INFOSCS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\54667532890.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\54667532890.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7677,7 +7677,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

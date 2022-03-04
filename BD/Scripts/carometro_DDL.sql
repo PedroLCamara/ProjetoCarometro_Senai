@@ -50,3 +50,4 @@ CREATE TABLE COMENTARIO (
   descricao VARCHAR(500) NOT NULL
 );
 GO
+select * from USUARIO
