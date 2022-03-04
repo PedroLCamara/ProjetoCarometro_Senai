@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import telaLogin from './pages/telaLogin';
 import perfilAluno from './pages/perfilAluno';
 import telaADM from './pages/telaADM';
+import Listagem from './pages/Listagem/listagem'
 
 import {Route, Routes, BrowserRouter as Router} from 'react-router-dom';
 
@@ -15,6 +16,7 @@ const Routing = (
         <Route exact path="/" component={telaLogin}/>
         <Route path="/PerfilAluno" component={perfilAluno} />
         <Route path="/TelaADM" component={telaADM} />
+        <Route path="/Listagem" element={<Listagem />} />
       </Routes>
     </div>
   </Router>

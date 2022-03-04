@@ -1,0 +1,25 @@
+.tela_listagem{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.botao_cadastrar{
+    border-radius: 84px;
+    background-color: #5081CA;
+    color: white;
+    border: none;
+    width: 317px;
+    height: 40px;
+    font-family: 'Rosario';
+    text-transform: uppercase;
+    font-size: 28px;
+}
+
+.h1_listagem{
+    font-family: 'Sansation';
+    text-transform: uppercase;
+}
