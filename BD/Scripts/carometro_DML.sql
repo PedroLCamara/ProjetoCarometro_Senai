@@ -10,7 +10,7 @@ VALUES
 (2,'Pedro Paulo','pedro@email.com','pedro123'),
 (2,'Gustavo Miguel','gustavo@email.com', 'gustavo'),
 (2,'Ana Luiza','ana@email.com', 'ana123'),
-(1,'Administrador','adm@gmail.com','adm12345');
+(1,'Administrador','adm@gmail.com','	');
 GO
 
 INSERT INTO TURMA (descricaoTurma)

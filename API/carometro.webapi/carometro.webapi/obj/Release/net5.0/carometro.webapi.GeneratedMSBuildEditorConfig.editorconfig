@@ -6,5 +6,3 @@ build_property.ProjectTypeGuids =
 build_property.PublishSingleFile = 
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
-build_property.RootNamespace = carometro.webapi
-build_property.ProjectDir = C:\Users\43392993832\Desktop\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\
