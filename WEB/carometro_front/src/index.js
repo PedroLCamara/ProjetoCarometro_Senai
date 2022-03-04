@@ -19,8 +19,6 @@ const Routing = (
     <div>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
-        {/* <Route path="/PerfilAluno" element={<perfilAluno/>} />
-        <Route path="/TelaADM" element={<telaADM/>} /> */}
         <Route path="/TesteCadastro" element={<TesteCadastro/>} />
         <Route path="/TesteBuscarPorFoto" element={<TesteBuscarPorFoto/>} />
       </Routes>
