@@ -19,8 +19,81 @@ export default class Login extends Component {
                 </header>
 
                 <main>
-                    <img className="logo_meninas" src={logo_meninas} alt="" />
-                    <input type="Nome aluno(a)" />
+                    <div className="container_main">
+
+                        <img className="logo_meninas" src={logo_meninas} alt="" />
+
+                        <div className="container_input">
+                            <div className="unica">
+                                <h4>Nome aluno(a)</h4>
+                                <input type="Nome aluno(a)" />
+                            </div>
+                            <div className="unica">
+                                <h4>Rm do aluno(a)</h4>
+                                <input type="Rm do aluno(a)" />
+                            </div>
+                            <div className="unica">
+                                <h4>Turma do aluno(a)</h4>
+                                <input type="Turma do aluno(a)" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container_input2">
+                        <div>
+                            <h4>Data Nascimento</h4>
+                            <input type="Data Nascimento" />
+                        </div>
+                        <div>
+                            <h4>CPF do aluno(a)</h4>
+                            <input type="CPF do aluno(a)" />
+                        </div>
+                    </div>
+
+                    <div className="container_input3">
+                        <div>
+                            <h4>Telefone do responsavel</h4>
+                            <input type="Telefone do responsavel" />
+                        </div>
+                        <div>
+                            <h4>Telefone  fixo</h4>
+                            <input type="Telefone  fixo" />
+                        </div>
+                    </div>
+
+                    <div className="container_input4">
+                        <div>
+                            <h4>Email do aluno(a)</h4>
+                            <input type="Email do aluno(a)" />
+                        </div>
+                        <div>
+                            <h4>email do responsavel</h4>
+                            <input type="email do responsavel" />
+                        </div>
+                    </div>
+
+                    <div className="container_comentario">
+                        <h4>Faça seu comentario</h4>
+                        <div>
+                        <input type="Faça seu comentario" />
+                        </div>
+                    </div>
+
+                    <div className="input_salvar">
+                        <div>
+                            <button>Alterar</button>
+                        </div>
+
+                        <div>
+                            <button>Salvar</button>
+                        </div>
+
+                        <div>
+                            <button>Excluir</button>
+                        </div>
+                    </div>
+
+
                 </main>
             </div>
 
