@@ -42,7 +42,7 @@ export const WebcamCapture = () => {
 
         const Conversoes = async(imageSrc) => {
             var UrltoFile;
-            UrltoFile = await dataURLtoFile(imageSrc, "ImagemWebcam");
+            UrltoFile = await dataURLtoFile(imageSrc, "ImagemWebcam.jpeg");
             console.log(UrltoFile);
             ImgFile = UrltoFile;
         }

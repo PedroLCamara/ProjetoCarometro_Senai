@@ -26,7 +26,7 @@ namespace carometro.webapi.Utils
 
                 if (arquivo.Length > 0)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(arquivo.ContentDisposition).FileName.Trim('"');
+                    var fileName = arquivo.FileName;
 
                     if (ValidarExtensao(extensoesPermitidas, fileName))
                     {

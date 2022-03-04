@@ -7586,16 +7586,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\43392993832\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\54667532890.INFOSCS\\.nuget\\packages\\": {}
->>>>>>> aef5961c603e99451df9daaf8c9acfbcd2ce1631
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
       "projectName": "carometro.webapi",
       "projectPath": "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
@@ -7604,16 +7599,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\43392993832\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\54667532890.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
-      "projectName": "carometro.webapi",
-      "projectPath": "C:\\Users\\54667532890.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
-      "packagesPath": "C:\\Users\\54667532890.INFOSCS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\54667532890.INFOSCS\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\54667532890.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> aef5961c603e99451df9daaf8c9acfbcd2ce1631
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7692,12 +7677,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
->>>>>>> aef5961c603e99451df9daaf8c9acfbcd2ce1631
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

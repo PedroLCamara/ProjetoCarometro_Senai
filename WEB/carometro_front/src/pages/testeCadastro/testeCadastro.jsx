@@ -18,7 +18,6 @@ export const TesteCadastro = () => {
     const [TelFixo, setTelFixo] = useState('');
     const [EmailAluno, setEmailAluno] = useState('');
     const [EmailResponsavel, setEmailResponsavel] = useState('');
-    const [IdImg, setIdImg] = useState('');
     const [IsLoading, setIsLoading] = useState(false);
 
 
@@ -61,13 +60,14 @@ export const TesteCadastro = () => {
     }
 
     const CadastrarAluno = async (event) => {
+        event.preventDefault()
         if (IsFileSet() == undefined) {
             alert('Tire uma foto com a webcam!');
         }
         else {
             var FaceDetectada = await DetectarFace();
-            event.preventDefault()
             var SucessoCadastro = true;
+            var IdImg;
             if (FaceDetectada === undefined) {
                 alert("Imagem inválida: Insira uma foto com rosto visível");
             }
@@ -84,31 +84,34 @@ export const TesteCadastro = () => {
                         'Content-Type': 'application/octet-stream'
                     }
                 }).then((resposta) => {
-                    setIdImg(resposta.data.persistedFaceId)
+                    IdImg = resposta.data.persistedFaceId;
                 }).catch((erro) => {
                     console.log(erro)
                 })
+                console.log(GetAsFile());
                 var formData = new FormData();
-                formData.append('IdTurma', IdTurma);
-                formData.append('NomeAluno', Nome);
-                formData.append('Rm', Rm);
-                formData.append('DataNascimento', DtNasc);
-                formData.append('Cpf', Cpf);
-                formData.append('TelefoneCel', Telefone);
-                formData.append('TelefoneFixo', TelFixo);
-                formData.append('EmailAluno', EmailAluno);
-                formData.append('EmailResponsavel', EmailResponsavel);
-                formData.append('UrlImg', IdImg);
+                formData.append('idTurma', IdTurma);
+                formData.append('nomeAluno', Nome);
+                formData.append('rm', Rm);
+                formData.append('dataNascimento', DtNasc);
+                formData.append('cpf', Cpf);
+                formData.append('telefoneCel', Telefone);
+                formData.append('telefoneFixo', TelFixo);
+                formData.append('emailAluno', EmailAluno);
+                formData.append('emailResponsavel', EmailResponsavel);
+                formData.append('urlImg', IdImg);
                 formData.append('arquivo', GetAsFile());
-                await axios.post('http://localhost:5000/api/Aluno', {
-                    "data": formData
-                }, {
-                    headers: {
+
+                await axios({
+                    method: "post",
+                    url: "http://localhost:5000/api/Aluno",
+                    data: formData,
+                    headers: { 
                         "Content-Type": "multipart/form-data",
-                        Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-                    },
-                }
-                ).then((resposta) => {
+                        Authorization: 'Bearer ' + localStorage.getItem('usuario-login')  
+                },
+                })
+                .then((resposta) => {
                     console.log(resposta);
                     alert("Aluno cadatrado com sucesso!")
                 }).catch((erro) => {
@@ -134,7 +137,7 @@ export const TesteCadastro = () => {
 
     return (
         <div>
-            <form onSubmit={(form) => CadastrarAluno(form)} className="FormCadastro">
+            <form onSubmit={(form) => CadastrarAluno(form)} className="FormCadastro ContainerGrid">
                 <div className="DadoCadastro">
                     <WebcamCapture />
                     <div className="InputsCadastro ContainerGrid">
@@ -161,11 +164,11 @@ export const TesteCadastro = () => {
                     </div>
                 </div>
                 {
-                    IsLoading === true && <button> Loading </button>
+                    IsLoading === true && <button className="BotaoCadastro"> Loading </button>
                 }
 
                 {
-                    IsLoading === false && <button type="submit">
+                    IsLoading === false && <button className="BotaoCadastro" type="submit">
                         Cadastrar
                     </button>
                 }
