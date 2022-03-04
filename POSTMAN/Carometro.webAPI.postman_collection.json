@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "94610d5c-62bc-47d9-aeba-b30c0f2b8b20",
+		"name": "Carometro.webAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comentarios.Controller",
+			"item": [
+				{
+					"name": "Comentario.GetByAluno",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlZHJvQGVtYWlsLmNvbSIsImp0aSI6IjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiUm9sZSI6IjIiLCJleHAiOjE2NDU5MzE4MzIsImlzcyI6ImNhcm9tZXRyby53ZWJhcGkiLCJhdWQiOiJjYXJvbWV0cm8ud2ViYXBpIn0.YlE110YorApQamkE-zr62c2ppKUfkhh85RzrQbkpc3M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Comentario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Comentario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comentario.Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlZHJvQGVtYWlsLmNvbSIsImp0aSI6IjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiUm9sZSI6IjIiLCJleHAiOjE2NDU5MzE4MzIsImlzcyI6ImNhcm9tZXRyby53ZWJhcGkiLCJhdWQiOiJjYXJvbWV0cm8ud2ViYXBpIn0.YlE110YorApQamkE-zr62c2ppKUfkhh85RzrQbkpc3M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\" : \"Suspensão acabou\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Comentario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Comentario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alunos.Controller",
+			"item": [
+				{
+					"name": "Aluno.ListarTodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlZHJvQGVtYWlsLmNvbSIsImp0aSI6IjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiUm9sZSI6IjIiLCJleHAiOjE2NDU5MzE4MzIsImlzcyI6ImNhcm9tZXRyby53ZWJhcGkiLCJhdWQiOiJjYXJvbWV0cm8ud2ViYXBpIn0.YlE110YorApQamkE-zr62c2ppKUfkhh85RzrQbkpc3M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Aluno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aluno.ListarTodosPorTurma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsIlJvbGUiOiIxIiwiZXhwIjoxNjQ1OTM1ODM3LCJpc3MiOiJjYXJvbWV0cm8ud2ViYXBpIiwiYXVkIjoiY2Fyb21ldHJvLndlYmFwaSJ9.FfsapW13UfP2IVWp1uPGpZ0mFkGrK_EyBkAkjqyNJwk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Aluno/porturma/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Aluno",
+								"porturma",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aluno.BuscarPorNome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlZHJvQGVtYWlsLmNvbSIsImp0aSI6IjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiUm9sZSI6IjIiLCJleHAiOjE2NDU5MzE4MzIsImlzcyI6ImNhcm9tZXRyby53ZWJhcGkiLCJhdWQiOiJjYXJvbWV0cm8ud2ViYXBpIn0.YlE110YorApQamkE-zr62c2ppKUfkhh85RzrQbkpc3M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Aluno/por-nome/Pris",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Aluno",
+								"por-nome",
+								"Pris"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aluno.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsIlJvbGUiOiIxIiwiZXhwIjoxNjQ2MzMwNTg0LCJpc3MiOiJjYXJvbWV0cm8ud2ViYXBpIiwiYXVkIjoiY2Fyb21ldHJvLndlYmFwaSJ9.6FPfCnmnoZlVmlE3DnXGqD7LlsBH20MbdBjQR1izgxc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "IdTurma",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "NomeAluno",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "Rm",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "DataNascimento",
+									"value": "01/01/2020",
+									"type": "text"
+								},
+								{
+									"key": "Cpf",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "TelefoneCel",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "TelefoneFixo",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "EmailAluno",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "EmailResponsavel",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "arquivo",
+									"type": "file",
+									"src": "/C:/Users/43392993832/Desktop/TesteCarometro/CAZE.jpg"
+								},
+								{
+									"key": "Urlimg",
+									"value": "TESTE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Aluno",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aluno.Atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsIlJvbGUiOiIxIiwiZXhwIjoxNjQ2MzMwNTg0LCJpc3MiOiJjYXJvbWV0cm8ud2ViYXBpIiwiYXVkIjoiY2Fyb21ldHJvLndlYmFwaSJ9.6FPfCnmnoZlVmlE3DnXGqD7LlsBH20MbdBjQR1izgxc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "IdTurma",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "NomeAluno",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "Rm",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "DataNascimento",
+									"value": "01/01/2020",
+									"type": "text"
+								},
+								{
+									"key": "Cpf",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "TelefoneCel",
+									"value": "TESTE",
+									"type": "text"
+								},
+								{
+									"key": "TelefoneFixo",
+									"value": "TESTE1",
+									"type": "text"
+								},
+								{
+									"key": "EmailAluno",
+									"value": "TESTE1",
+									"type": "text"
+								},
+								{
+									"key": "EmailResponsavel",
+									"value": "TESTE1",
+									"type": "text"
+								},
+								{
+									"key": "arquivo",
+									"type": "file",
+									"src": "/C:/Users/43392993832/Desktop/TesteCarometro/CAZEZIN.jpg"
+								},
+								{
+									"key": "Urlimg",
+									"value": "TESTE13",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Aluno/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Aluno",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aluno.Deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsIlJvbGUiOiIxIiwiZXhwIjoxNjQ1OTM1ODM3LCJpc3MiOiJjYXJvbWV0cm8ud2ViYXBpIiwiYXVkIjoiY2Fyb21ldHJvLndlYmFwaSJ9.FfsapW13UfP2IVWp1uPGpZ0mFkGrK_EyBkAkjqyNJwk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Aluno/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Aluno",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Turmas.Controller",
+			"item": [
+				{
+					"name": "Turmas.Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsIlJvbGUiOiIxIiwiZXhwIjoxNjQ1OTg1NDY3LCJpc3MiOiJjYXJvbWV0cm8ud2ViYXBpIiwiYXVkIjoiY2Fyb21ldHJvLndlYmFwaSJ9.3W9iToHcebpavzII4H9bSEdzXnBjDlHYu-OeVQLX1QU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Turma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Turma"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

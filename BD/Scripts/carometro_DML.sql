@@ -1,4 +1,3 @@
-
 USE carometro
 GO
 
@@ -6,13 +5,12 @@ INSERT INTO TIPOUSUARIO (nomeTipoUsuario)
 VALUES ('Administrador'),('Colaboradores');
 GO
 
---USUARIO
 INSERT INTO USUARIO (idTipoUsuario,nomeUsuario,email,senha)
 VALUES 
 (2,'Pedro Paulo','pedro@email.com','pedro123'),
 (2,'Gustavo Miguel','gustavo@email.com', 'gustavo'),
 (2,'Ana Luiza','ana@email.com', 'ana123'),
-(1,'Administrador','adm@gmail.com','adm12345');
+(1,'Administrador','adm@gmail.com','	');
 GO
 
 INSERT INTO TURMA (descricaoTurma)
@@ -34,7 +32,7 @@ GO
 INSERT INTO COMENTARIO(idAluno, descricao)
 VALUES 
 (1,'Sem Comentarios'),
-(2,'Suspensão de 10 dias'),
-(3,'Sem Comentários'),
-(4,'Aluno Destaque do Mês');
+(2,'Suspensao de 10 dias'),
+(3,'Sem Comentarios'),
+(4,'Aluno Destaque do Mes');
 GO
