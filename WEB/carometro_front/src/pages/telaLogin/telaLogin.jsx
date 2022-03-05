@@ -4,6 +4,7 @@ import imgfundo from '../../img/fundo_login.png'
 import logo from '../../img/logo.png'
 import axios from 'axios';
 import { UsuarioAutenticado } from '../../services/auth';
+import { Navigate } from 'react-router-dom';
 
 export default class Login extends Component {
 
@@ -15,9 +16,11 @@ export default class Login extends Component {
       senha: '',
       erroMensagem: '',
       isLoading: false,
+      redirectTo: null,
     };
   }
 
+  
   efetuaLogin = (event) => {
     event.preventDefault();
     console.log('logando')
@@ -32,16 +35,8 @@ export default class Login extends Component {
         if (resposta.status === 200) {
 
           localStorage.setItem('usuario-login', resposta.data.token);
-          this.setState({ isLoading: false })
-
-          let base64 = localStorage.getItem('usuario-login').split('.')[1];
-
-
-          console.log(base64)
-
-
-          console.log('logado: ' + UsuarioAutenticado());
-
+          this.setState({ isLoading: false });
+          this.setState({redirectTo : "/Listagem"});
         }
       })
 
@@ -62,6 +57,11 @@ export default class Login extends Component {
 
 
   render() {
+    if (this.state.redirectTo != null) {
+      return(
+        <Navigate to={this.state.redirectTo} />
+      )
+    }
     return (
       <div >
         <main>

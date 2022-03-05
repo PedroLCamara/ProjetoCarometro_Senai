@@ -44,7 +44,7 @@ namespace carometro.webapi.Controllers
         {
             try
             {
-                Aluno alunoConsulta = _alunoRepository.BuscarPorImagem(idImg.Split(".")[0]);
+                Aluno alunoConsulta = _alunoRepository.BuscarPorImagem(idImg);
                 if (alunoConsulta != null)
                 {
                     return Ok(alunoConsulta);

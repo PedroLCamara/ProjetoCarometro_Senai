@@ -62,7 +62,7 @@ namespace carometro.webapi.Repositories
 
         public Aluno BuscarPorImagem(string urlImg)
         {
-            return ctx.Alunos.FirstOrDefault(a => a.Urlimg == urlImg);
+            return ctx.Alunos.ToList().Find(a => a.Urlimg.Split(".")[0] == urlImg);
         }
 
         public Aluno BuscarPorId(int id)

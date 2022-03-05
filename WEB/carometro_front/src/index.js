@@ -6,6 +6,7 @@ import perfilAluno from './pages/perfilAluno/perfilAluno';
 import telaADM from './pages/telaADM/telaADM';
 import TesteCadastro from './pages/testeCadastro/testeCadastro';
 import TesteBuscarPorFoto from './pages/testeBuscarPorFoto/testeBuscarPorFoto';
+import Listagem from './pages/listagem/listagem';
 
 import {
   Routes,
@@ -21,6 +22,7 @@ const Routing = (
         <Route exact path="/" element={<Login/>}/>
         <Route path="/TesteCadastro" element={<TesteCadastro/>} />
         <Route path="/TesteBuscarPorFoto" element={<TesteBuscarPorFoto/>} />
+        <Route path="/Listagem" element={<Listagem/>}/>
       </Routes>
     </div>
   </Router>

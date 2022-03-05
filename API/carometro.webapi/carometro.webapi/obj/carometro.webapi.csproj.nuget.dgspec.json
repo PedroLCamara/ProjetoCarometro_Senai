@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {}
+    "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {
+    "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
+        "projectUniqueName": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
         "projectName": "carometro.webapi",
-        "projectPath": "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
-        "packagesPath": "C:\\Users\\43392993832\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\43392993832\\Desktop\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\",
+        "projectPath": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
+        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\43392993832\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

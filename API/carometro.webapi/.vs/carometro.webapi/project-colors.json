@@ -5,6 +5,11 @@
       "ProjectGuid": "430689f9-95b8-4a10-8fb2-3093c065789b",
       "DisplayName": "carometro.webapi",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1

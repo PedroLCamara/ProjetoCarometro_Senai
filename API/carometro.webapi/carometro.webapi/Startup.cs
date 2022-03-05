@@ -17,6 +17,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Extensions.FileProviders;
 
 namespace carometro.webapi
 {
@@ -118,6 +119,13 @@ namespace carometro.webapi
             app.UseRouting();
 
             app.UseCors("CorsPolicy");
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                        Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
+                RequestPath = "/StaticFiles"
+            });
 
             app.UseAuthentication();
 

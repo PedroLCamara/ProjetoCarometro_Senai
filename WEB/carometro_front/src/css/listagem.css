@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-wrap: normal;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ContainerGrid{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.FormCadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.DadoCadastro{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.InputsCadastro{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 480px;
+    justify-content: space-around;
+}
+
+.CampoCadastro{
+    font-weight: 300;
+    font-size: 25px;
+    color: gray;
+    width: 390px;
+    height: 60px;
+    border: 2px solid #1124C7;
+    text-align: center;
+}
+
+.BotaoCadastro{
+    width: 100%;
+    height: 60px;
+    background-color: blue;
+    color: white;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.AlinhamentoInputsBotaoCadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tela_listagem{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.botao_cadastrar{
+    border-radius: 84px;
+    background-color: #5081CA;
+    color: white;
+    border: none;
+    width: 317px;
+    height: 40px;
+    text-transform: uppercase;
+    font-size: 28px;
+}
+
+.h1_listagem{
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.ContainerListagem{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.BoxPesquisas{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+
+.TextoWebcam{
+    display: flex;
+    align-items: center;
+    width: 220px;
+    height: 75px;
+    background-color: #B0D4FF;
+    color: white;
+    font-weight: 400;
+    border-radius: 20px;
+    padding: 20px 34.5px;
+    border: none;
+    font-size: 25px;
+    text-align: center;
+}
+
+.BotaoPesquisa{
+    display: none;
+}
+
+.InputPesquisa{
+    display: flex;
+    align-items: center;
+    background-color: #B0D4FF;
+    color: white;
+    width: 400px;
+    height: 50px;
+    font-weight: 400;
+    border-radius: 20px;
+    border: none;
+    font-size: 25px;
+    text-align: center;
+}
+
+.ContainerAlunoListado{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 270px;
+    padding: 20px 30px;
+    background-color: #4B9AC5;
+}
+
+.BoxInterno{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 20px 30px;
+    align-items: center;
+}
+.BoxInterno img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+.BoxDadosAluno{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.BoxDadosAluno div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.BoxDadosAluno p{
+    font-size: 40px;
+    color: white;
+    font-weight: 400;
+}
