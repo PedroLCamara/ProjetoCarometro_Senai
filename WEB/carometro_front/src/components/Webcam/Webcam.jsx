@@ -81,12 +81,12 @@ export const WebcamCapture = () => {
                         setImage('')
                     }}
                         className="webcam-btn">
-                        Retake Image</button> :
+                        Recapturar</button> :
                     <button onClick={(e) => {
                         e.preventDefault();
                         capture();
                     }}
-                        className="webcam-btn">Capture</button>
+                        className="webcam-btn">Capturar</button>
                 }
             </div>
         </div>
