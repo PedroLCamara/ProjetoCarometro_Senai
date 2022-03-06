@@ -5,7 +5,9 @@ import '../../css/listagem.css';
 import { TokenConvertido, UsuarioAutenticado } from '../../services/auth';
 import { GetAsFile, IsFileSet, WebcamCapture } from "../../components/Webcam/Webcam";
 import { GetAsFileBusca, IsFileSetBusca, WebcamCaptureBusca } from "../../components/WebcamBusca/WebcamBusca";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 
 export const Listagem = () => {
     const [listaAlunos, setListaAlunos] = useState([]);
@@ -270,174 +272,203 @@ export const Listagem = () => {
         render()
         return (
             <div>
+                <Header />
                 <main className="tela_listagem">
-                    <h1 className="h1_listagem">Listagem de Alunos</h1>
-                    <div>
-                        <div className='BoxPesquisas'>
-                            <form onSubmit={(e) => BuscarPorQuery(e)}>
-                                <input value={QueryBusca} onChange={(e) => setQueryBusca(e.target.value)} placeholder="Pesquisar Aluno" className='InputPesquisa'></input>
-                                <button type='submit' className='BotaoPesquisa'></button>
-                            </form>
-                            <select className="InputPesquisa" value={IdTurmaListagem} onChange={(select) => setIdTurmaListagem(select.target.value)}>
-                                <optgroup>
-                                    <option value={0}>Selecione uma turma</option>
-                                    {
-                                        ListaTurma.map((turma) => {
-                                            return (
-                                                <option value={turma.idTurma}>{turma.descricaoTurma}</option>
-                                            )
-                                        })
-                                    }
-                                </optgroup>
-                            </select>
-                            <div>
-                                <button onClick={(e) => AcharAluno(e)} type="submit" className='TextoWebcam'>Pesquisar por imagem</button>
-                                <WebcamCaptureBusca />
-                            </div>
-                        </div>
-                        <input placeholder="Pesquisar Por Imagem"></input>
-                    </div>
-                    {
-                        listaAlunos.filter(c => c.idTurma == 1).map((aluno) => {
-                            return (
-                                <div className='ContainerAlunoListado' key={aluno.idAluno}>
-                                    <div className='BoxInterno'>
-                                        <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
-                                        <div className='BoxDadosAluno'>
-                                            <div>
-                                                <p>{aluno.nomeAluno}</p>
-                                                <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
-                                            </div>
-                                            <div>
-                                                <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
-                                                <p>{aluno.emailAluno}</p>
-                                                <p>{aluno.rm}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div className='ContainerListagem'>
+                            <h1 className="h1_listagem">Listagem de Alunos</h1>
+                            <div className='BoxPesquisas'>
+                                <form onSubmit={(e) => BuscarPorQuery(e)}>
+                                    <input value={QueryBusca} onChange={(e) => setQueryBusca(e.target.value)} placeholder="Pesquisar Aluno" className='InputPesquisa'></input>
+                                    <button type='submit' className='BotaoPesquisa'></button>
+                                </form>
+                                <select className="InputPesquisa" value={IdTurmaListagem} onChange={(select) => setIdTurmaListagem(select.target.value)}>
+                                    <optgroup>
+                                        <option value={0}>Selecione uma turma</option>
+                                        {
+                                            ListaTurma.map((turma) => {
+                                                return (
+                                                    <option value={turma.idTurma}>{turma.descricaoTurma}</option>
+                                                )
+                                            })
+                                        }
+                                    </optgroup>
+                                </select>
+                                <div>
+                                    <button onClick={(e) => AcharAluno(e)} type="submit" className='TextoWebcam'>Pesquisar por imagem</button>
+                                    <WebcamCaptureBusca />
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                            {
+                                IdTurmaListagem == 0 &&
+                                listaAlunos.map((aluno) => {
+                                    return (
+                                        <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
+                                            <div className='BoxInterno'>
+                                                <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
+                                                <div className='BoxDadosAluno'>
+                                                    <div>
+                                                        <p>{aluno.nomeAluno}</p>
+                                                        <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        <p>{aluno.emailAluno}</p>
+                                                        <p>{aluno.rm}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
+                            {
+                                IdTurmaListagem != 0 &&
+                                listaAlunos.filter(c => c.idTurma == IdTurmaListagem).map((aluno) => {
+                                    return (
+                                        <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
+                                            <div className='BoxInterno'>
+                                                <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
+                                                <div className='BoxDadosAluno'>
+                                                    <div>
+                                                        <p>{aluno.nomeAluno}</p>
+                                                        <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        <p>{aluno.emailAluno}</p>
+                                                        <p>{aluno.rm}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </div>
                 </main>
+                <Footer />
             </div>
         )
     }
     else {
         render()
         return (
-            <div className='ContainerGrid'>
-                <main className="tela_listagem">
-                    <form onSubmit={(form) => CadastrarAluno(form)} className="FormCadastro">
-                        <div className="DadoCadastro">
-                            <WebcamCapture />
-                            <div className='AlinhamentoInputsBotaoCadastro'>
-                                <div className="InputsCadastro">
-                                    <select className="CampoCadastro" value={IdTurma} onChange={(select) => setIdTurma(select.target.value)}>
-                                        <optgroup>
-                                            <option value={0}>Selecione uma turma</option>
-                                            {
-                                                ListaTurma.map((turma) => {
-                                                    return (
-                                                        <option value={turma.idTurma}>{turma.descricaoTurma}</option>
-                                                    )
-                                                })
-                                            }
-                                        </optgroup>
-                                    </select>
-                                    <input className="CampoCadastro" type={"text"} value={Nome} onChange={(input) => setNome(input.target.value)} placeholder="Nome do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"text"} value={Rm} onChange={(input) => setRm(input.target.value)} placeholder="RM do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"date"} value={DtNasc} onChange={(input) => setDtNasc(input.target.value)} placeholder="Data de nascimento do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"text"} value={Cpf} onChange={(input) => setCpf(input.target.value)} placeholder="CPF do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"text"} value={Telefone} onChange={(input) => setTelefone(input.target.value)} placeholder="Telefone do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"text"} value={TelFixo} onChange={(input) => setTelFixo(input.target.value)} placeholder="Telefone fixo do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"email"} value={EmailAluno} onChange={(input) => setEmailAluno(input.target.value)} placeholder="Email do aluno(a)" required></input>
-                                    <input className="CampoCadastro" type={"email"} value={EmailResponsavel} onChange={(input) => setEmailResponsavel(input.target.value)} placeholder="Email do responsável do aluno(a)" required></input>
-                                </div>
-                                {
-                                    IsLoading === true && <button className="botao_cadastrar"> Loading </button>
-                                }
-
-                                {
-                                    IsLoading === false && <button className="botao_cadastrar" type="submit">
-                                        Cadastrar
-                                    </button>
-                                }
-                            </div>
-                        </div>
-                    </form>
-                    <div className='ContainerListagem'>
-                        <h1 className="h1_listagem">Listagem de Alunos</h1>
-                        <div className='BoxPesquisas'>
-                            <form onSubmit={(e) => BuscarPorQuery(e)}>
-                                <input value={QueryBusca} onChange={(e) => setQueryBusca(e.target.value)} placeholder="Pesquisar Aluno" className='InputPesquisa'></input>
-                                <button type='submit' className='BotaoPesquisa'></button>
-                            </form>
-                            <select className="InputPesquisa" value={IdTurmaListagem} onChange={(select) => setIdTurmaListagem(select.target.value)}>
-                                <optgroup>
-                                    <option value={0}>Selecione uma turma</option>
+            <div>
+                <Header />
+                <div className='ContainerGrid ContainerTelaListagem'>
+                    <main className="tela_listagem">
+                        <form onSubmit={(form) => CadastrarAluno(form)} className="FormCadastro">
+                            <div className="DadoCadastro">
+                                <WebcamCapture />
+                                <div className='AlinhamentoInputsBotaoCadastro'>
+                                    <div className="InputsCadastro">
+                                        <select className="CampoCadastro" value={IdTurma} onChange={(select) => setIdTurma(select.target.value)}>
+                                            <optgroup>
+                                                <option value={0}>Selecione uma turma</option>
+                                                {
+                                                    ListaTurma.map((turma) => {
+                                                        return (
+                                                            <option value={turma.idTurma}>{turma.descricaoTurma}</option>
+                                                        )
+                                                    })
+                                                }
+                                            </optgroup>
+                                        </select>
+                                        <input className="CampoCadastro" type={"text"} value={Nome} onChange={(input) => setNome(input.target.value)} placeholder="Nome do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"text"} value={Rm} onChange={(input) => setRm(input.target.value)} placeholder="RM do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"date"} value={DtNasc} onChange={(input) => setDtNasc(input.target.value)} placeholder="Data de nascimento do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"text"} value={Cpf} onChange={(input) => setCpf(input.target.value)} placeholder="CPF do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"text"} value={Telefone} onChange={(input) => setTelefone(input.target.value)} placeholder="Telefone do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"text"} value={TelFixo} onChange={(input) => setTelFixo(input.target.value)} placeholder="Telefone fixo do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"email"} value={EmailAluno} onChange={(input) => setEmailAluno(input.target.value)} placeholder="Email do aluno(a)" required></input>
+                                        <input className="CampoCadastro" type={"email"} value={EmailResponsavel} onChange={(input) => setEmailResponsavel(input.target.value)} placeholder="Email do responsável do aluno(a)" required></input>
+                                    </div>
                                     {
-                                        ListaTurma.map((turma) => {
-                                            return (
-                                                <option value={turma.idTurma}>{turma.descricaoTurma}</option>
-                                            )
-                                        })
+                                        IsLoading === true && <button className="botao_cadastrar"> Loading </button>
                                     }
-                                </optgroup>
-                            </select>
-                            <div>
-                            <button onClick={(e) => AcharAluno(e)} type="submit" className='TextoWebcam'>Pesquisar por imagem</button>
-                                <WebcamCaptureBusca />
+
+                                    {
+                                        IsLoading === false && <button className="botao_cadastrar" type="submit">
+                                            Cadastrar
+                                        </button>
+                                    }
+                                </div>
                             </div>
+                        </form>
+                        <div className='ContainerListagem'>
+                            <h1 className="h1_listagem">Listagem de Alunos</h1>
+                            <div className='BoxPesquisas'>
+                                <form onSubmit={(e) => BuscarPorQuery(e)}>
+                                    <input value={QueryBusca} onChange={(e) => setQueryBusca(e.target.value)} placeholder="Pesquisar Aluno" className='InputPesquisa'></input>
+                                    <button type='submit' className='BotaoPesquisa'></button>
+                                </form>
+                                <select className="InputPesquisa" value={IdTurmaListagem} onChange={(select) => setIdTurmaListagem(select.target.value)}>
+                                    <optgroup>
+                                        <option value={0}>Selecione uma turma</option>
+                                        {
+                                            ListaTurma.map((turma) => {
+                                                return (
+                                                    <option value={turma.idTurma}>{turma.descricaoTurma}</option>
+                                                )
+                                            })
+                                        }
+                                    </optgroup>
+                                </select>
+                                <div>
+                                    <button onClick={(e) => AcharAluno(e)} type="submit" className='TextoWebcam'>Pesquisar por imagem</button>
+                                    <WebcamCaptureBusca />
+                                </div>
+                            </div>
+                            {
+                                IdTurmaListagem == 0 &&
+                                listaAlunos.map((aluno) => {
+                                    return (
+                                        <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
+                                            <div className='BoxInterno'>
+                                                <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
+                                                <div className='BoxDadosAluno'>
+                                                    <div>
+                                                        <p>{aluno.nomeAluno}</p>
+                                                        <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        <p>{aluno.emailAluno}</p>
+                                                        <p>{aluno.rm}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
+                            {
+                                IdTurmaListagem != 0 &&
+                                listaAlunos.filter(c => c.idTurma == IdTurmaListagem).map((aluno) => {
+                                    return (
+                                        <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
+                                            <div className='BoxInterno'>
+                                                <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
+                                                <div className='BoxDadosAluno'>
+                                                    <div>
+                                                        <p>{aluno.nomeAluno}</p>
+                                                        <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        <p>{aluno.emailAluno}</p>
+                                                        <p>{aluno.rm}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
                         </div>
-                        {
-                            IdTurmaListagem == 0 &&
-                            listaAlunos.map((aluno) => {
-                                return (
-                                    <div className='ContainerAlunoListado' key={aluno.idAluno}>
-                                        <div className='BoxInterno'>
-                                            <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
-                                            <div className='BoxDadosAluno'>
-                                                <div>
-                                                    <p>{aluno.nomeAluno}</p>
-                                                    <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
-                                                </div>
-                                                <div>
-                                                    <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
-                                                    <p>{aluno.emailAluno}</p>
-                                                    <p>{aluno.rm}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                        {
-                            IdTurmaListagem != 0 &&
-                            listaAlunos.filter(c => c.idTurma == IdTurmaListagem).map((aluno) => {
-                                return (
-                                    <div className='ContainerAlunoListado' key={aluno.idAluno}>
-                                        <div className='BoxInterno'>
-                                            <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
-                                            <div className='BoxDadosAluno'>
-                                                <div>
-                                                    <p>{aluno.nomeAluno}</p>
-                                                    <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
-                                                </div>
-                                                <div>
-                                                    <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
-                                                    <p>{aluno.emailAluno}</p>
-                                                    <p>{aluno.rm}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </main>
+                    </main>
+                </div>
+                <Footer />
             </div>
         )
     }

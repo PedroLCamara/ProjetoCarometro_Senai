@@ -141,6 +141,7 @@
     height: 270px;
     padding: 20px 30px;
     background-color: #4B9AC5;
+    text-decoration: none;
 }
 
 .BoxInterno{
@@ -178,4 +179,8 @@
     font-size: 40px;
     color: white;
     font-weight: 400;
+}
+
+.ContainerTelaListagem{
+    margin-top: 75px;
 }

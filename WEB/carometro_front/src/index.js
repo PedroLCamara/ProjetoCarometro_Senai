@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import Login from './pages/telaLogin/telaLogin';
 import PerfilAluno from './pages/perfilAluno/perfilAluno';
-import TelaADM from './pages/telaADM/telaADM';
-import TesteCadastro from './pages/testeCadastro/testeCadastro';
-import TesteBuscarPorFoto from './pages/testeBuscarPorFoto/testeBuscarPorFoto';
 import Listagem from './pages/listagem/listagem';
 
 import {
@@ -20,9 +17,7 @@ const Routing = (
     <div>
       <Routes>
         <Route exact path="/" element={<Login/>}/>
-        <Route path="/TesteCadastro" element={<TesteCadastro/>} />
-        <Route path="/perfilAluno" element={<PerfilAluno/>} />
-        <Route path="/TesteBuscarPorFoto" element={<TesteBuscarPorFoto/>} />
+        <Route path="/perfilAluno/:idAluno" element={<PerfilAluno/>}/>
         <Route path="/Listagem" element={<Listagem/>}/>
       </Routes>
     </div>

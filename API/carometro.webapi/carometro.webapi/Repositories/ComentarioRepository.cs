@@ -1,6 +1,7 @@
 ﻿using carometro.webapi.Contexts;
 using carometro.webapi.Domains;
 using carometro.webapi.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

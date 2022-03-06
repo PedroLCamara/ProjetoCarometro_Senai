@@ -38,6 +38,26 @@ namespace carometro.webapi.Controllers
             }
         }
 
+        [HttpGet("porid/{idAluno}")]
+        [Authorize]
+        public IActionResult BuscarPorId(int idAluno)
+        {
+            try
+            {
+                Aluno AlunoBuscado = _alunoRepository.BuscarPorId(idAluno);
+                if (AlunoBuscado != null)
+                {
+                    return Ok(AlunoBuscado);
+                }
+                else return NotFound(new {message = "Aluno não encontrado!"});
+            }
+            catch (Exception erro)
+            {
+                BadRequest(erro);
+                throw;
+            }
+        }
+
         [HttpGet("porimagem/{idImg}")]
         [Authorize]
         public IActionResult BuscarPorFoto(string idImg)

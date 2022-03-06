@@ -42,6 +42,11 @@ namespace carometro.webapi.Repositories
         public void Deletar(byte id)
         {
             Aluno aluno = ctx.Alunos.FirstOrDefault(a => a.IdAluno == id);
+            List<Comentario> comentarios = ctx.Comentarios.ToList().FindAll(c => c.IdAluno == aluno.IdAluno);
+            foreach (var item in comentarios)
+            {
+                ctx.Comentarios.Remove(item);
+            }
             ctx.Alunos.Remove(aluno);
             ctx.SaveChanges();
         }
@@ -67,7 +72,7 @@ namespace carometro.webapi.Repositories
 
         public Aluno BuscarPorId(int id)
         {
-            return ctx.Alunos.AsNoTracking().FirstOrDefault(a => a.IdAluno == id);
+            return ctx.Alunos.Include(Aluno => Aluno.IdTurmaNavigation).AsNoTracking().FirstOrDefault(a => a.IdAluno == id);
         }
     }
 }

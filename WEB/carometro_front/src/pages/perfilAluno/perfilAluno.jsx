@@ -1,115 +1,128 @@
 import { Component } from "react";
-import '../../css/perfil.css'
+import '../../css/perfil.css';
 import logo_menor from "../../img/logo_menor.png";
 import logo_meninas from "../../img/logo_meninas.png";
- 
-export default class Login extends Component {
-    render() {
-        return (
-            <div>
-                <header>
-                    <div className="container containerHeader">
-                        <img className="logo_menor" src={logo_menor} alt="" />
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { TokenConvertido, UsuarioAutenticado } from '../../services/auth';
+import axios from "axios";
 
-                        <div className="container_header">
-                            <h3 className="listagem">Listagem de alunos </h3>
-                            <h3 className="perfil">Perfil de alunos</h3>
-                        </div>
-                    </div>
-                </header>
+export const PerfilAluno = () => {
+    const { idAluno } = useParams();
+    const [Aluno, setAluno] = useState({});
+    const [Comentario, setComentario] = useState('');
+    const [Comentarios, setComentarios] = useState([]);
 
-                <main>
-                    <div className="container_main">
+    const navigate = useNavigate();
 
-                        <img className="logo_meninas" src={logo_meninas} alt="" />
-
-                        <div className="container_input">
-                            <div className="unica">
-                                {/* <h4>Nome aluno(a)</h4> */}
-                                <input type="name" placeholder="Nome do Aluno" />
-                            </div>
-                            <div className="unica">
-                                {/* <h4>Rm do aluno(a)</h4> */}
-                                <input type="text" placeholder="Rm do Aluno(a)" />
-                            </div>
-                            <div className="unica">
-                                {/* <h4>Turma do aluno(a)</h4> */}
-                                <input type="Text" placeholder="Turma do Aluno" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="container_input2">
-                        <div>
-                            {/* <h4>Data Nascimento</h4> */}
-                            <input type="Data" placeholder="Data de Nascimento" />
-                        </div>
-                        <div>
-                            {/* <h4>CPF do aluno(a)</h4> */}
-                            <input type="Text" placeholder="CPF do aluno(a)" />
-                        </div>
-                    </div>
-
-                    <div className="container_input3">
-                        <div>
-                            {/* <h4>Telefone do responsavel</h4> */}
-                            <input type="text"placeholder="Telefone do Responsavel"/>
-                        </div>
-                        <div>
-                            {/* <h4>Telefone  fixo</h4> */}
-                            <input type="text" placeholder="Telefone Fixo"/>
-                        </div>
-                    </div>
-
-                    <div className="container_input4">
-                        <div>
-                            {/* <h4>Email do aluno(a)</h4> */}
-                            <input type="E-mail" placeholder="E-mail do Aluno(a)" />
-                        </div>
-                        <div>
-                            {/* <h4>email do responsavel</h4> */}
-                            <input type="E-mail" placeholder="E-mail do responsavel" />
-                        </div>
-                    </div>
-
-                    <div className="container_comentario">
-                        <div>
-                            <input type="text"  placeholder="Faça seu Comentário"/>
-                        </div>
-                    </div>
-
-                    <div className="botao_salvar">
-                        <div>
-                            <button>Alterar</button>
-                        </div>
-
-                        <div>
-                            <button>Salvar</button>
-                        </div>
-
-                        <div>
-                            <button>Excluir</button>
-                        </div>
-                    </div>
-
-                    <footer className="container_footer">
-                        <div className="contatos-endereco container">
-                            <div className="contatos">
-                                <h3>Contatos: </h3>
-                                <p>(11) 91789-8675</p>
-                                <p>(11) 2754-5468</p>
-                            </div>
-                            <div className="endereco">
-                               <h3>Endereço: </h3>
-                               <p>Rua Barão de limeira , 34</p>
-                            </div>
-                        </div>
-                    </footer>
-
-
-                </main>
-            </div>
-
-        );
+    const ExcluirAluno = async (e) => {
+        e.preventDefault()
+        await axios.delete('http://localhost:5000/api/Aluno/' + idAluno, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }).then((resposta) => {
+            if (resposta.status == 204) {
+                navigate('/Listagem')
+            }
+        }).catch((erro) => console.log(erro))
     }
+
+    const PreencherAluno = async () => {
+        await axios.get('http://localhost:5000/api/Aluno/porid/' + idAluno, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }).then((resposta) => {
+            if (resposta.status == 200) {
+                console.log(resposta.data)
+                setAluno(resposta.data)
+            }
+            else {
+                navigate('/Listagem')
+            }
+        }).catch((erro) => {
+            console.log(erro);
+        })
+    }
+
+    const PreencherComentarios = async () => {
+        await axios.get('http://localhost:5000/api/Comentario/' + idAluno, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }).then((resposta) => {
+            console.log(resposta.data);
+            setComentarios(resposta.data);
+        })
+    }
+
+    useEffect(async () => {
+        await PreencherAluno();
+        PreencherComentarios();
+        console.log(TokenConvertido());
+    }, [])
+
+    const Comentar = async (e) => {
+        e.preventDefault();
+        await axios.post('http://localhost:5000/api/Comentario/' + idAluno, {
+            "idUsuario": parseInt(TokenConvertido().jti),
+            "descricao": Comentario
+        }, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }).then((resposta) => {
+            console.log(resposta)
+            alert('Comentario publicado!')
+        }).catch((erro) => console.log(erro))
+        PreencherComentarios();
+    }
+
+    return (
+        <div>
+            <Header />
+            <main className="MainPerfil ContainerGrid">
+                <img className="logo_meninas" src={'http://localhost:5000/StaticFiles/Images/' + Aluno.urlimg}></img>
+                <div className="ContainerPerfil">
+                    <div className="DadosPerfil">
+                        <span>{Aluno.nomeAluno}</span>
+                        <span>{Aluno.rm}</span>
+                        {
+                            Aluno.idTurmaNavigation != undefined && <span>{Aluno.idTurmaNavigation.descricaoTurma}</span>
+                        }
+                        {
+                            Aluno.dataNascimento != undefined && <span>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(Aluno.dataNascimento.split('T')[0]))}</span>
+                        }
+                        <span>{Aluno.cpf}</span>
+                        <span>{Aluno.telefoneCel}</span>
+                        <span>{Aluno.telefoneFixo}</span>
+                        <span>{Aluno.emailAluno}</span>
+                        <span>{Aluno.emailResponsavel}</span>
+                    </div>
+                    <form className="FormularioComentario" onSubmit={(e) => Comentar(e)}>
+                        <input value={Comentario} onChange={(e) => setComentario(e.target.value)} type="text" placeholder="Insira um comentario..." className="InputComentario"></input>
+                        <button type="submit"></button>
+                    </form>
+                    <div className="InputsPerfil">
+                        <button className="BtnExcluir" onClick={(e) => ExcluirAluno(e)}>Excluir</button>
+                    </div>
+                    <h2 className="TituloComentarios">Comentarios</h2>
+                    {
+                        Comentarios[0] != undefined && Comentarios.map((c) => {
+                            return (
+                                <span className="Comentario" key={c.idComentario}>{c.descricao}</span>
+                            )
+                        })
+                    }
+                </div>
+            </main>
+            <Footer />
+        </div>
+
+    );
 }
+
+export default PerfilAluno;
