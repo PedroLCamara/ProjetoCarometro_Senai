@@ -64,7 +64,6 @@ C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\ca
 C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\carometro.webapi.runtimeconfig.json
 C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\carometro.webapi.runtimeconfig.dev.json
 C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\carometro.webapi.dll
-C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\ref\carometro.webapi.dll
 C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\carometro.webapi.pdb
 C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\carometro.webapi.xml
 C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\bin\Debug\net5.0\BCrypt.Net-Next.dll

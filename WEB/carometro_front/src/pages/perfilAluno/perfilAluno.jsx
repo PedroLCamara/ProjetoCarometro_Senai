@@ -32,15 +32,33 @@ export const PerfilAluno = () => {
 
     const ExcluirAluno = async (e) => {
         e.preventDefault()
+        var AlunoUrlImg = Aluno.urlimg;
+        var AlunoUrlImgArray = AlunoUrlImg.split(".");
+        var urlDeletar = AlunoUrlImgArray[0];
+        console.log(urlDeletar);
+        setIsLoading(true);
         await axios.delete('http://localhost:5000/api/Aluno/' + idAluno, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
-        }).then((resposta) => {
+        }).then(async (resposta) => {
             if (resposta.status == 204) {
+                await axios({
+                    method: 'delete',
+                    url: 'https://carometro-g7.cognitiveservices.azure.com/face/v1.0/facelists/testes/persistedFaces/' + urlDeletar,
+                    headers: {
+                        'Ocp-Apim-Subscription-Key': '2d6af2ccdff543aaa2ded6dc19b89e68',
+                    }
+                }).then((resposta) => {
+                    console.log(resposta.data)
+                }).catch((erro) => {
+                    console.log(erro)
+                })
+                setIsLoading(false)
                 navigate('/Listagem')
             }
         }).catch((erro) => {
+            setIsLoading(false)
             if (erro.toJSON().status === 401 || erro.toJSON().status === 403) {
                 localStorage.removeItem('usuario-login');
                 navigate('/login')
@@ -189,11 +207,17 @@ export const PerfilAluno = () => {
                     }).catch((erro) => {
                         console.log(erro)
                     })
+
+                    if (ErroSalvo.toJSON().status === 401 || ErroSalvo.toJSON().status === 403) {
+                        localStorage.removeItem('usuario-login');
+                        navigate('/login')
+                    }
+                    console.log(ErroSalvo)
                 }
                 else{
                     await axios({
                         method: 'delete',
-                        url: 'https://carometro-g7.cognitiveservices.azure.com/face/v1.0/facelists/testes/persistedFaces/' + urlImgAntiga.Split(".")[0],
+                        url: 'https://carometro-g7.cognitiveservices.azure.com/face/v1.0/facelists/testes/persistedFaces/' + urlImgAntiga.split(".")[0],
                         headers: {
                             'Ocp-Apim-Subscription-Key': '2d6af2ccdff543aaa2ded6dc19b89e68',
                         }
@@ -202,11 +226,6 @@ export const PerfilAluno = () => {
                     }).catch((erro) => {
                         console.log(erro)
                     })
-                    if (ErroSalvo.toJSON().status === 401 || ErroSalvo.toJSON().status === 403) {
-                        localStorage.removeItem('usuario-login');
-                        navigate('/login')
-                    }
-                    console.log(ErroSalvo)
                 }
                 setIsLoading(false);
             }
@@ -274,7 +293,14 @@ export const PerfilAluno = () => {
                         <button type="submit"></button>
                     </form>
                     <div className="InputsPerfil">
-                        <button className="BtnExcluir" onClick={(e) => ExcluirAluno(e)}>Excluir</button>
+                        {
+                            IsLoading == false &&
+                            <button className="BtnExcluir" onClick={(e) => ExcluirAluno(e)}>Excluir</button>
+                        }
+                        {
+                            IsLoading == true &&
+                            <button className="BtnExcluir" disabled>Carregando...</button>
+                        }
                     </div>
                     <h2 className="TituloComentarios">Comentarios</h2>
                     {
