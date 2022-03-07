@@ -327,7 +327,6 @@ header{
 }
 
 .Comentario{
-    font-weight: 300;
     font-size: 25px;
     color: gray;
     width: 390px;
@@ -338,4 +337,16 @@ header{
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+}
+
+.ComentarioUsuario{
+    font-weight: 700;
+}
+
+.ComentarioDescricao{
+    font-weight: 300;
+}
+
+.FormAtt{
+    margin-top: 120px;
 }

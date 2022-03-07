@@ -46,6 +46,10 @@ export const Listagem = () => {
                     setListaAlunos(resposta.data)
                     console.log(resposta.data)
                 }).catch((erro) => {
+                    if (erro.toJSON().status === 401 || erro.toJSON().status === 403) {
+                        localStorage.removeItem('usuario-login');
+                        navigate('/login')
+                    }
                     console.log(erro)
                 })
                 alert('Não há alunos com este nome!');
@@ -61,6 +65,10 @@ export const Listagem = () => {
             setListaTurma(resposta.data)
             console.log(resposta.data)
         }).catch((erro) => {
+            if (erro.toJSON().status === 401 || erro.toJSON().status === 403) {
+                localStorage.removeItem('usuario-login');
+                navigate('/login')
+            }
             console.log(erro)
         })
     }
@@ -74,6 +82,10 @@ export const Listagem = () => {
             setListaAlunos(resposta.data)
             console.log(resposta.data)
         }).catch((erro) => {
+            if (erro.toJSON().status === 401 || erro.toJSON().status === 403) {
+                localStorage.removeItem('usuario-login');
+                navigate('/login')
+            }
             console.log(erro)
         })
     }
@@ -104,6 +116,7 @@ export const Listagem = () => {
             alert('Tire uma foto com a webcam!');
         }
         else {
+            let ErroSalvo;
             var FaceDetectada = await DetectarFace();
             var SucessoCadastro = true;
             var IdImg;
@@ -155,7 +168,9 @@ export const Listagem = () => {
                     .then((resposta) => {
                         console.log(resposta);
                         alert("Aluno cadatrado com sucesso!")
+                        ListarAlunos();
                     }).catch((erro) => {
+                        ErroSalvo = erro;
                         console.log(erro)
                         SucessoCadastro = false
                     })
@@ -171,6 +186,11 @@ export const Listagem = () => {
                     }).catch((erro) => {
                         console.log(erro)
                     })
+
+                    if (ErroSalvo.toJSON().status === 401 || ErroSalvo.toJSON().status === 403) {
+                        localStorage.removeItem('usuario-login');
+                        navigate('/login')
+                    }
                 }
                 setIsLoading(false);
             }
@@ -250,9 +270,18 @@ export const Listagem = () => {
                         headers: {
                             Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
                         }
-                    }).then((resposta) => {
-                        console.log(resposta.data)
+                    }).then(async (resposta) => {
+                        let alunoBusca = await resposta.data;
+                        let idAlunoBusca = await alunoBusca.idAluno;
+                        if (resposta.data != undefined) {
+                            navigate('/perfilAluno/' + idAlunoBusca)
+                        }
+                        else alert("Face não reconhecida!");
                     }).catch((erro) => {
+                        if (erro.toJSON().status === 401 || erro.toJSON().status === 403) {
+                            localStorage.removeItem('usuario-login');
+                            navigate('/login')
+                        }
                         console.log(erro)
                     })
                 }
@@ -274,77 +303,78 @@ export const Listagem = () => {
             <div>
                 <Header />
                 <main className="tela_listagem">
-                        <div className='ContainerListagem'>
-                            <h1 className="h1_listagem">Listagem de Alunos</h1>
-                            <div className='BoxPesquisas'>
-                                <form onSubmit={(e) => BuscarPorQuery(e)}>
-                                    <input value={QueryBusca} onChange={(e) => setQueryBusca(e.target.value)} placeholder="Pesquisar Aluno" className='InputPesquisa'></input>
-                                    <button type='submit' className='BotaoPesquisa'></button>
-                                </form>
-                                <select className="InputPesquisa" value={IdTurmaListagem} onChange={(select) => setIdTurmaListagem(select.target.value)}>
-                                    <optgroup>
-                                        <option value={0}>Selecione uma turma</option>
-                                        {
-                                            ListaTurma.map((turma) => {
-                                                return (
-                                                    <option value={turma.idTurma}>{turma.descricaoTurma}</option>
-                                                )
-                                            })
-                                        }
-                                    </optgroup>
-                                </select>
-                                <div>
-                                    <button onClick={(e) => AcharAluno(e)} type="submit" className='TextoWebcam'>Pesquisar por imagem</button>
-                                    <WebcamCaptureBusca />
-                                </div>
+                    <div className='ContainerListagem'>
+                        <h1 className="h1_listagem">Listagem de Alunos</h1>
+                        <div className='BoxPesquisas'>
+                            <form onSubmit={(e) => BuscarPorQuery(e)}>
+                                <input value={QueryBusca} onChange={(e) => setQueryBusca(e.target.value)} placeholder="Pesquisar Aluno" className='InputPesquisa'></input>
+                                <button type='submit' className='BotaoPesquisa'></button>
+                            </form>
+                            <select className="InputPesquisa" value={IdTurmaListagem} onChange={(select) => setIdTurmaListagem(select.target.value)}>
+                                <optgroup>
+                                    <option value={0}>Selecione uma turma</option>
+                                    {
+                                        ListaTurma != undefined &&
+                                        ListaTurma.map((turma) => {
+                                            return (
+                                                <option value={turma.idTurma}>{turma.descricaoTurma}</option>
+                                            )
+                                        })
+                                    }
+                                </optgroup>
+                            </select>
+                            <div>
+                                <button onClick={(e) => AcharAluno(e)} type="submit" className='TextoWebcam'>Pesquisar por imagem</button>
+                                <WebcamCaptureBusca />
                             </div>
-                            {
-                                IdTurmaListagem == 0 &&
-                                listaAlunos.map((aluno) => {
-                                    return (
-                                        <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
-                                            <div className='BoxInterno'>
-                                                <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
-                                                <div className='BoxDadosAluno'>
-                                                    <div>
-                                                        <p>{aluno.nomeAluno}</p>
-                                                        <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
-                                                        <p>{aluno.emailAluno}</p>
-                                                        <p>{aluno.rm}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    )
-                                })
-                            }
-                            {
-                                IdTurmaListagem != 0 &&
-                                listaAlunos.filter(c => c.idTurma == IdTurmaListagem).map((aluno) => {
-                                    return (
-                                        <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
-                                            <div className='BoxInterno'>
-                                                <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
-                                                <div className='BoxDadosAluno'>
-                                                    <div>
-                                                        <p>{aluno.nomeAluno}</p>
-                                                        <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
-                                                        <p>{aluno.emailAluno}</p>
-                                                        <p>{aluno.rm}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    )
-                                })
-                            }
                         </div>
+                        {
+                            IdTurmaListagem == 0 &&
+                            listaAlunos.map((aluno) => {
+                                return (
+                                    <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
+                                        <div className='BoxInterno'>
+                                            <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
+                                            <div className='BoxDadosAluno'>
+                                                <div>
+                                                    <p>{aluno.nomeAluno}</p>
+                                                    <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
+                                                </div>
+                                                <div>
+                                                    <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                    <p>{aluno.emailAluno}</p>
+                                                    <p>{aluno.rm}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                )
+                            })
+                        }
+                        {
+                            IdTurmaListagem != 0 &&
+                            listaAlunos.filter(c => c.idTurma == IdTurmaListagem).map((aluno) => {
+                                return (
+                                    <Link className='ContainerAlunoListado' key={aluno.idAluno} to={"/perfilAluno/" + aluno.idAluno}>
+                                        <div className='BoxInterno'>
+                                            <img src={'http://localhost:5000/StaticFiles/Images/' + aluno.urlimg} alt="" />
+                                            <div className='BoxDadosAluno'>
+                                                <div>
+                                                    <p>{aluno.nomeAluno}</p>
+                                                    <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
+                                                </div>
+                                                <div>
+                                                    <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                    <p>{aluno.emailAluno}</p>
+                                                    <p>{aluno.rm}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                )
+                            })
+                        }
+                    </div>
                 </main>
                 <Footer />
             </div>
@@ -366,6 +396,7 @@ export const Listagem = () => {
                                             <optgroup>
                                                 <option value={0}>Selecione uma turma</option>
                                                 {
+                                                    ListaTurma != undefined &&
                                                     ListaTurma.map((turma) => {
                                                         return (
                                                             <option value={turma.idTurma}>{turma.descricaoTurma}</option>
@@ -432,7 +463,10 @@ export const Listagem = () => {
                                                         <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
                                                     </div>
                                                     <div>
-                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        {
+                                                            ListaTurma != undefined &&
+                                                            <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        }
                                                         <p>{aluno.emailAluno}</p>
                                                         <p>{aluno.rm}</p>
                                                     </div>
@@ -455,7 +489,10 @@ export const Listagem = () => {
                                                         <p>{new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(aluno.dataNascimento.split('T')[0]))}</p>
                                                     </div>
                                                     <div>
-                                                        <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        {
+                                                            ListaTurma != undefined &&
+                                                            <p>{ListaTurma.find(t => t.idTurma == aluno.idTurma).descricaoTurma}</p>
+                                                        }
                                                         <p>{aluno.emailAluno}</p>
                                                         <p>{aluno.rm}</p>
                                                     </div>

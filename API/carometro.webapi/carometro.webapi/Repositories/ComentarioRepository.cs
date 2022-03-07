@@ -15,7 +15,16 @@ namespace carometro.webapi.Repositories
 
         public List<Comentario> BuscarPorIdAluno(int idAluno)
         {
-            return ctx.Comentarios.ToList().FindAll(c => c.IdAluno == idAluno);
+            return ctx.Comentarios.Select(C => new Comentario(){
+                IdComentario = C.IdComentario,
+                IdAluno = C.IdAluno,
+                IdUsuario = C.IdUsuario,
+                Descricao = C.Descricao,
+                IdUsuarioNavigation = new Usuario()
+                {
+                    NomeUsuario = C.IdUsuarioNavigation.NomeUsuario
+                }
+            }).ToList();
         }
 
         public void Cadastrar(Comentario novoComentario, int idAluno, int IdUsuario)

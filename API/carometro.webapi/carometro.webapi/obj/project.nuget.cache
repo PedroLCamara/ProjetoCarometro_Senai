@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hHkGM+KoqpdGf39uaRNx3ZG/KI4j3i3eo+hOpd+kOYniYxGlOSM9gcepRYyuGrq4h8ThMbTKu377oqp5fBYnVw==",
+  "dgSpecHash": "tyxu1TCyl7p37OAMOyxvbqNewRNTtgmyHRxOMpUUL6RZDY3IsSNaV6mouMrfWPcj1QGgHDqW9fr0wGg3DWFWwg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Pichau\\Desktop\\Carometro\\ProjetoCarometro_Senai\\API\\carometro.webapi\\carometro.webapi\\carometro.webapi.csproj",
   "expectedPackageFiles": [
@@ -144,7 +144,8 @@
     "C:\\Users\\Pichau\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Pichau\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Pichau\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
   ],
   "logs": []
 }

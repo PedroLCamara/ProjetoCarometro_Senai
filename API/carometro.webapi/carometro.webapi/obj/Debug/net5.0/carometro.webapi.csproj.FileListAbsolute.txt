@@ -269,3 +269,4 @@ C:\Users\54667532890.INFOSCS\Desktop\ProjetoCarometro_Senai\API\carometro.webapi
 C:\Users\54667532890.INFOSCS\Desktop\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\obj\Debug\net5.0\carometro.webapi.pdb
 C:\Users\54667532890.INFOSCS\Desktop\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\obj\Debug\net5.0\carometro.webapi.genruntimeconfig.cache
 >>>>>>> aef5961c603e99451df9daaf8c9acfbcd2ce1631
+C:\Users\Pichau\Desktop\Carometro\ProjetoCarometro_Senai\API\carometro.webapi\carometro.webapi\obj\Debug\net5.0\refint\carometro.webapi.dll
